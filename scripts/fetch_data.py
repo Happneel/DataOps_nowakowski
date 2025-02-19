@@ -11,7 +11,7 @@ def fetch_data():
         df_deaths = pd.DataFrame.from_dict(data["deaths"], orient='index', columns=["Deaths"])
         df = df_cases.join(df_deaths)
         df.index = pd.to_datetime(df.index, format="%m/%d/%y", errors='coerce')
-        df.to_csv("../data/dataset.csv")
+        df.to_csv("data/dataset.csv")
         print("✅ Données récupérées avec succès.")
     else:
         print("❌ Erreur:", response.status_code, response.text)

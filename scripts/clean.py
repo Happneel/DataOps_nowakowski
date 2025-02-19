@@ -6,12 +6,12 @@ def clean_project():
 
     # Définition des fichiers et dossiers à supprimer
     files_to_remove = [
-        "../data/dataset.csv",
-        "../data/dataset_clean.csv",
-        "../data/dataset.csv.gz",
-        "../data/dataset_clean.csv.gz",
-        "../reports/covid_trend.html",
-        "../benchmarks/benchmark_results.txt"
+        "data/dataset.csv",
+        "data/dataset_clean.csv",
+        "data/dataset.csv.gz",
+        "data/dataset_clean.csv.gz",
+        "reports/covid_trend.html",
+        "benchmarks/benchmark_results.txt"
     ]
 
     # Suppression des fichiers listés
@@ -23,12 +23,12 @@ def clean_project():
             print(f"⚠️ Fichier non trouvé : {file}")
 
     # Suppression des fichiers CSV temporaires
-    for file in glob.glob("../data/*.csv"):
+    for file in glob.glob("data/*.csv"):
         os.remove(file)
         print(f"✅ Supprimé : {file}")
 
     # Suppression des fichiers compressés temporaires
-    for file in glob.glob("../data/*.gz"):
+    for file in glob.glob("data/*.gz"):
         os.remove(file)
         print(f"✅ Supprimé : {file}")
 

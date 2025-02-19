@@ -23,7 +23,7 @@ def benchmark():
         "Visualisation des données": visualize_data
     }
 
-    with open("../benchmarks/benchmark_results.txt", "w") as f:
+    with open("benchmarks/benchmark_results.txt", "w") as f:
         for task_name, task_function in tasks.items():
             start_time = time.time()
             initial_cpu, initial_memory = track_resources(pid)
