@@ -27,6 +27,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: 📂 Créer les dossiers nécessaires
+        run: mkdir -p data reports benchmarks
+
       - name: 🚀 Lancer le pipeline complet
         run: python scripts/main.py
 
