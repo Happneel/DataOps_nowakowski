@@ -1,0 +1,43 @@
+name: Data Pipeline Automation
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  data_pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Cloner le dépôt
+        uses: actions/checkout@v3
+
+      - name: 🛠️ Installer Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: 📦 Installer les dépendances
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: 🚀 Lancer le pipeline complet
+        run: python scripts/main.py
+
+      - name: 📤 Sauvegarder les rapports et fichiers transformés
+        uses: actions/upload-artifact@v3
+        with:
+          name: reports
+          path: reports/
+
+      - name: 📤 Sauvegarder les résultats des benchmarks
+        uses: actions/upload-artifact@v3
+        with:
+          name: benchmarks
+          path: benchmarks/
